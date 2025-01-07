@@ -1,4 +1,5 @@
 import React from 'react';
+import UnityView from '@azesmway/react-native-unity/src/UnityView';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
@@ -21,7 +22,7 @@ const HomeScreen = () => {
 };
 
 const UnityScreen = () => {
-  return <View style={styles.screen} />;
+  return <UnityView style={styles.screen} />;
 };
 
 const App = () => {
