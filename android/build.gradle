@@ -10,6 +10,9 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+        flatDir {
+            dirs "${project(':unityLibrary').projectDir}/libs"
+        }
     }
     dependencies {
         classpath("com.android.tools.build:gradle:8.1.1") // Specify a version
@@ -22,11 +25,9 @@ apply plugin: "com.facebook.react.rootproject"
 
 allprojects {
     repositories {
+        // Add Unity's library directory
         google()
         mavenCentral()
-        // Add Unity's library directory
-        flatDir {
-            dirs "${project(':unityLibrary').projectDir}/libs"
-        }
+        
     }
 }

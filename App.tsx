@@ -1,8 +1,9 @@
 import React from 'react';
-import UnityView from '@azesmway/react-native-unity/src/UnityView';
-import { NavigationContainer } from '@react-navigation/native';
+import UnityView from '@azesmway/react-native-unity/src';
+import { NavigationContainer, StackActions, useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import Unity from './Unity';
 
 enum RootRoutes {
   HOME = 'Home',
@@ -12,9 +13,17 @@ enum RootRoutes {
 const Stack = createNativeStackNavigator();
 
 const HomeScreen = () => {
+  const navigation = useNavigation()
+
   return (
     <View style={styles.screen}>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button}
+      onPress={() => {
+          const pushAction = StackActions.push('Unity', {})
+
+          navigation.dispatch(pushAction)
+       }}
+      >
         <Text style={styles.buttonText}>Go Unity</Text>
       </TouchableOpacity>
     </View>
@@ -30,7 +39,7 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name={RootRoutes.HOME} component={HomeScreen} />
-        <Stack.Screen name={RootRoutes.UNITY} component={UnityScreen} />
+        <Stack.Screen name={RootRoutes.UNITY} component={Unity} />
       </Stack.Navigator>
     </NavigationContainer>
   );
